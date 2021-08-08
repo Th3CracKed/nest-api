@@ -12,30 +12,30 @@ import { ItemsService } from './items.service';
 
 @Controller('items')
 export class ItemsController {
-  constructor(private readonly itemsService: ItemsService) {}
+  constructor(private readonly  itemsService: ItemsService) {}
 
   @Get()
-  findAll() {
-    return this.itemsService.findAll();
+  async findAll() {
+    return await this.itemsService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id) {
-    return this.itemsService.findOne(id);
+  async findOne(@Param('id') id) {
+    return await this.itemsService.findOne(id);
   }
 
   @Post()
-  create(@Body() createItemDto: CreateItemDto) {
-    return `Name ${createItemDto.name} Desc: ${createItemDto.description}`;
+  async create(@Body() createItemDto: CreateItemDto) {
+    return await this.itemsService.create(createItemDto);
   }
 
   @Put(':id')
-  update(@Body() updateItemDto: CreateItemDto, @Param('id') id: string) {
-    return `Update ${id}, Name ${updateItemDto.name} Desc: ${updateItemDto.description}`;
+  async update(@Body() updateItemDto: CreateItemDto, @Param('id') id: string) {
+    return await this.itemsService.update(updateItemDto, id);
   }
 
   @Delete(':id')
-  delete(@Param('id') id): string {
-    return `Delete ${id}`;
+  async delete(@Param('id') id) {
+    return await this.itemsService.delete(id);
   }
 }
