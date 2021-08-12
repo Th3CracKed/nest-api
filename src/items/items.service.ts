@@ -1,8 +1,7 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { Item } from 'src/interfaces/item.interface';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
-import { CreateItemDto } from './dto/create-item.dto';
 @Injectable()
 export class ItemsService {
   private readonly items: Item[];
